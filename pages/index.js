@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Layout from 'components/Layout'
-import Hero from 'components/Hero'
+import Banner from 'components/Banner'
 import HomeNewsList from 'components/HomeNewsList'
 import HomeInfoBlocks from 'components/HomeInfo/index'
 import Meta from 'components/Meta'
@@ -14,7 +14,7 @@ class HomePage extends React.Component {
       <Layout name='home-page'>
         <div>
           <Meta title='Accueil' />
-          <Hero title={config.home.hero.title} subtitle={config.home.hero.subtitle} imgUrl={config.home.hero.background} />
+          <Banner imgUrl={config.home.banner} />
           <HomeInfoBlocks />
           <HomeNewsList />
         </div>
