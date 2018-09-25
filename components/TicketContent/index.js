@@ -4,6 +4,8 @@ import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import WeezeventIframe from '../WeezeventIframe'
 
+import './styles.scss'
+
 function TicketContent ({ data: { loading, error, node } }) {
   if (error) {
     return <div className='notification is-danger'>Une erreur est survenue pendant le chargement de la billeterie
@@ -18,7 +20,7 @@ function TicketContent ({ data: { loading, error, node } }) {
           Vous devez télécharger l'autorisation parentale, l'imprimer, la remplir et l'apporter le jour de votre venue avec votre billet.
         </p>
         <div className='has-text-centered'>
-          <a target='_blank' href={node.minor.file.url}><button className='button is-primary' style='height: auto; white-space: normal;'>Télécharger l'autorisation parentale (format pdf)</button></a>
+          <a target='_blank' href={node.minor.file.url}><button className='button is-primary'>Télécharger l'autorisation parentale (format pdf)</button></a>
         </div>
       </div>}
       <div className='box '>
@@ -27,10 +29,10 @@ function TicketContent ({ data: { loading, error, node } }) {
       {node.rules && <div className='box content'>
         <p>
           <h2 className='title is-size-5'>Règlement intérieur</h2>
-          Vous devez télécharger l'autorisation parentale, l'imprimer, la remplir et l'apporter le jour de votre venue avec votre billet.
+          L'acquisition d'un ticket pour la Gamers Assembly entraîne adhésion au règlement intérieur disponible ci-dessous.
         </p>
         <div className='has-text-centered'>
-          <a target='_blank' href={node.rules.file.url}><button className='button is-primary' style='height: auto; white-space: normal;'>Télécharger le règlement intérieur (format pdf)</button></a>
+          <a target='_blank' href={node.rules.file.url}><button className='button is-primary'>Télécharger le règlement intérieur (format pdf)</button></a>
         </div>
       </div>}
     </div>
