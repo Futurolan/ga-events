@@ -18,7 +18,7 @@ function TicketContent ({ data: { loading, error, node } }) {
           Vous devez télécharger l'autorisation parentale, l'imprimer, la remplir et l'apporter le jour de votre venue avec votre billet.
         </p>
         <div className='has-text-centered'>
-          <a target='_blank' href={node.minor.file.url}><button className='button is-primary' style="height: auto; white-space: normal;">Télécharger l'autorisation parentale (format pdf)</button></a>
+          <a target='_blank' href={node.minor.file.url}><button className='button is-primary' style='height: auto; white-space: normal;'>Télécharger l'autorisation parentale (format pdf)</button></a>
         </div>
       </div>}
       <div className='box '>
@@ -30,7 +30,7 @@ function TicketContent ({ data: { loading, error, node } }) {
           Vous devez télécharger l'autorisation parentale, l'imprimer, la remplir et l'apporter le jour de votre venue avec votre billet.
         </p>
         <div className='has-text-centered'>
-          <a target='_blank' href={node.rules.file.url}><button className='button is-primary' style="height: auto; white-space: normal;">Télécharger le règlement intérieur (format pdf)</button></a>
+          <a target='_blank' href={node.rules.file.url}><button className='button is-primary' style='height: auto; white-space: normal;'>Télécharger le règlement intérieur (format pdf)</button></a>
         </div>
       </div>}
     </div>
