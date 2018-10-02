@@ -1,5 +1,6 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
+import config from '../config/config'
 
 export default class MyDocument extends Document {
   render () {
@@ -18,6 +19,19 @@ export default class MyDocument extends Document {
           <meta name='msapplication-config' content='/static/icons/browserconfig.xml' />
           <meta name='theme-color' content='#ffffff' />
           <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' />
+          <script
+            async
+            src={`https://www.googletagmanager.com/gtag/js?id=${config.gaTrackingId}`}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${config.gaTrackingId}');
+          ` }}
+          />
         </Head>
         <body>
           <Main />
