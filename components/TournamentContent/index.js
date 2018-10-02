@@ -11,6 +11,7 @@ import WeezeventPlayerList from '../WeezeventPlayersList'
 
 import './styles.scss'
 import TicketButton from '../TicketButton'
+import ToornamentIframe from '../ToornamentIframe'
 
 function TournamentContent ({ data: { loading, error, node } }) {
   if (error || (node && node.type.id !== 'tournament') || (node && node.edition.nid !== parseInt(process.env.EDITION_ID))) {
@@ -42,6 +43,9 @@ function TournamentContent ({ data: { loading, error, node } }) {
           <div className='content has-text-justified' >
             <div dangerouslySetInnerHTML={{ __html: node.description.value }} />
           </div>
+
+          <ToornamentIframe id={node.toornamentId} />
+
           <div className='panel'>
             <p className='panel-heading has-background-primary has-text-white'>
               <i className='fas fa-calendar-alt' />&nbsp;&nbsp;Planning
@@ -149,21 +153,23 @@ export const tournament = gql`
         }
         game:fieldTournamentGame{
           node:entity{
-            pegi:fieldGamePegi
-            editor:fieldGameEditor
-            type:fieldGameType
-            image:fieldGameImage{
-              mobile:derivative(style:CROP_5_1_705X141){
-                url
-              }
-              desktop:derivative(style:CROP_5_1_960X192){
-                url
-              }
-              widescreen:derivative(style:CROP_5_1_1155X231){
-                url
-              }
-              fullhd:derivative(style:CROP_5_1_1345X269){
-                url
+            ...on NodeGame{
+              pegi:fieldGamePegi
+              editor:fieldGameEditor
+              type:fieldGameType
+              image:fieldGameImage{
+                mobile:derivative(style:CROP_5_1_705X141){
+                  url
+                }
+                desktop:derivative(style:CROP_5_1_960X192){
+                  url
+                }
+                widescreen:derivative(style:CROP_5_1_1155X231){
+                  url
+                }
+                fullhd:derivative(style:CROP_5_1_1345X269){
+                  url
+                }
               }
             }
           }
@@ -173,6 +179,7 @@ export const tournament = gql`
         }
         reservedSlot:fieldTournamentReservedSlot
         size:fieldTournamentSize
+        toornamentId:fieldTournamentToornamentId
       }
     }
   }

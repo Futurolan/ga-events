@@ -3,6 +3,11 @@ import PropTypes from 'prop-types'
 
 import Header from '../Header'
 import Footer from '../Footer'
+import Router from 'next/router'
+
+import * as gtag from '../../lib/gtag'
+
+Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 
 const Layout = ({ name, children }) => (
   <div className={`wrapper ${name}`}>
