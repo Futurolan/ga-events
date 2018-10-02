@@ -1,5 +1,11 @@
 .ga-footer{
  &.footer{
    padding-bottom:3rem;
+   a:after{
+     content : ' - '
+   }
+   a:last-child:after{
+     content: ''
+   }
  }
 }

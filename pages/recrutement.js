@@ -3,10 +3,14 @@ import Layout from 'components/Layout'
 import Meta from 'components/Meta'
 import '../styles/styles.scss'
 import config from '../config/config'
+import ErrorPage from 'next/error'
 
 class RecrutementPage extends React.Component {
   render () {
-    const formUrl = 'https://goo.gl/forms/84pHQfSp50RcuUel2'
+    if (config.recruit.active !== true) {
+      return <ErrorPage statusCode={404} />
+    }
+
     return (
       <Layout name='recrutement-page has-bg-star'>
         <div className='section'>
@@ -14,9 +18,9 @@ class RecrutementPage extends React.Component {
           <div className='container has-text-centered'>
             <div className='content'>
               <p>
-                <a className='button is-primary' target='_blank' href={formUrl}>Voir le formulaire dans un nouvel onglet</a>
+                <a className='button is-primary' target='_blank' href={config.recruit.formUrl}>Voir le formulaire dans un nouvel onglet</a>
               </p>
-              <iframe frameBorder='0' height='1750' src={formUrl} width='100%'>Chargement en cours...</iframe>
+              <iframe frameBorder='0' height='1750' src={config.recruit.formUrl} width='100%'>Chargement en cours...</iframe>
             </div>
           </div>
         </div>

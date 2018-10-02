@@ -4,9 +4,14 @@ import Meta from 'components/Meta'
 import TournamentList from 'components/TournamentList'
 import '../styles/styles.scss'
 import config from '../config/config'
+import ErrorPage from 'next/error'
 
 class TournoisPage extends React.Component {
   render () {
+    if (config.tournaments.active !== true) {
+      return <ErrorPage statusCode={404} />
+    }
+
     return (
       <Layout name='tournois-page has-bg-star'>
         <div className='section'>

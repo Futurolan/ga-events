@@ -7,7 +7,7 @@ import config from '../../config/config'
 const Meta = (props) => {
   const title = props.title ? `${props.title} | ${config.title}` : config.title
   const description = props.description ? props.description : config.description
-  const image = props.image ? props.image : config.image
+  const image = props.image ? props.image : config.metaImage
   return (
     <Head>
       <title>{title}</title>

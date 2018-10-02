@@ -5,6 +5,7 @@ import gql from 'graphql-tag'
 import NewsCard from '..//NewsCard'
 import PropTypes from 'prop-types'
 import { Timeline } from 'react-twitter-widgets'
+import config from '../../config/config'
 
 function HomeNewsList ({
   data: { loading, error, nodeQuery }
@@ -24,7 +25,7 @@ function HomeNewsList ({
       <section className='section'>
         <div className='container'>
 
-          <div className='columns is-multiline is-variable'>
+          <div className='columns is-multiline is-8 is-variable'>
             <div className='column is-7-desktop is-12-tablet'>
               <h2 className='title title-line has-text-centered is-size-5 is-uppercase'><span >Actualités</span></h2>
               <div className='is-multiline columns is-6 is-variable news-list'>
@@ -51,7 +52,7 @@ function HomeNewsList ({
               <Timeline
                 dataSource={{
                   sourceType: 'profile',
-                  screenName: 'GamersAssembly',
+                  screenName: config.home.twitterAccount,
                   noHeader: true
                 }}
                 options={{

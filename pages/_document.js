@@ -7,7 +7,6 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <meta charSet='utf-8' />
-          <title>Gamers Assembly</title>
           <meta name='viewport' content='width=device-width, initial-scale=1' />
           <link rel='apple-touch-icon' sizes='180x180' href='/static/icons/apple-touch-icon.png' />
           <link rel='icon' type='image/png' sizes='32x32' href='/static/icons/favicon-32x32.png' />
@@ -19,7 +18,6 @@ export default class MyDocument extends Document {
           <meta name='msapplication-config' content='/static/icons/browserconfig.xml' />
           <meta name='theme-color' content='#ffffff' />
           <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' />
-          <link rel='stylesheet' href='/_next/static/style.css' />
         </Head>
         <body>
           <Main />

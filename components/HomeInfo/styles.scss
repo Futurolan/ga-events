@@ -1,6 +1,12 @@
 .ga-home-info{
 
-   .box{
-     height:100%;
-   }
+  .box{
+    height:100%;
+
+    .content{
+      strong {
+        color: #FFF;
+      }
+    }
+  }
 }
