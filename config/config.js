@@ -3,6 +3,7 @@ let config = {
   logo: `/static/img/logo-orange-100x100.png`,
   description: 'Retrouvez la Gamers Assembly édition Halloween très prochainement',
   metaImage: `${process.env.BASE_URL}/static/img/logo-orange-200x200.png`,
+  gaTrackingId: 'UA-7594737-17',
   home: {
     banner: '/static/img/bg-halloween-v1.png',
     twitterAccount: 'GamersAssembly'
