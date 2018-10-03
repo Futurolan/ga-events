@@ -35,7 +35,7 @@ let config = {
     description: 'Toutes les informations sur cet évènement'
   },
   tickets: {
-    title: 'Billeterie',
+    title: 'Billetterie',
     description: 'Achetez vos places pour la Gamers Assembly Halloween Edition 2018'
   },
   contact: {
