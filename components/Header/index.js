@@ -40,17 +40,17 @@ class Header extends React.Component {
           <div className={classNames('navbar-menu', 'has-background-primary', 'has-text-centered', { 'is-active': this.state.isOpen })} >
             <div className='navbar-start' />
             {config.news.active && <div className='navbar-item'>
-              <ActiveLink label='Actualités' className='has-text-white is-uppercase has-text-weight-bold' path='/news' />
+              <ActiveLink label={config.news.title} className='has-text-white is-uppercase has-text-weight-bold' path='/news' />
             </div>}
             <TicketMenu />
             {config.tournaments.active && <div className='navbar-item is-uppercase has-text-weight-bold'>
-              <ActiveLink label='Tournois' className='has-text-white' path='/tournois' />
+              <ActiveLink label={config.tournaments.title} className='has-text-white' path='/tournois' />
             </div>}
             {config.info.active && <div className='navbar-item is-uppercase has-text-weight-bold'>
-              <ActiveLink label='Infos pratiques' className='has-text-white' path='/infos' />
+              <ActiveLink label={config.info.title} className='has-text-white' path='/infos' />
             </div>}
             {config.partners.active && <div className='navbar-item is-uppercase has-text-weight-bold'>
-              <ActiveLink label='Partenaires' className='has-text-white' path='/partenaires' />
+              <ActiveLink label={config.partners.title} className='has-text-white' path='/partenaires' />
             </div>}
             <div className='navbar-end'>
               <div className='navbar-item'>

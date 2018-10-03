@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import ActiveLink from '../ActiveLink'
+import config from '../../config/config'
 
 function TicketMenu ({ data: { loading, error, node } }) {
   if (error) {
@@ -12,7 +13,7 @@ function TicketMenu ({ data: { loading, error, node } }) {
 
   if (node && node.url) {
     return <div className='navbar-item ga-ticket-menu is-uppercase has-text-weight-bold'>
-      <ActiveLink label='Billeterie' className='has-text-white' path='/billeterie' />
+      <ActiveLink label={config.tickets.title} className='has-text-white' path='/billetterie' />
     </div>
   } else { return null }
 }

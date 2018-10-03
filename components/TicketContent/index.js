@@ -3,17 +3,19 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import WeezeventIframe from '../WeezeventIframe'
+import config from '../../config/config'
 
 import './styles.scss'
 
 function TicketContent ({ data: { loading, error, node } }) {
   if (error) {
-    return <div className='notification is-danger'>Une erreur est survenue pendant le chargement de la billeterie
+    return <div className='notification is-danger'>Une erreur est survenue pendant le chargement de la billetterie
       !!!</div>
   }
 
-  if (node.url && node.weezeventId) {
+  if (node && node.url && node.weezeventId) {
     return <div className='ga-ticket-content'>
+      <h1 className='title title-line has-text-centered'><span>{config.tickets.title}</span></h1>
       {node.minor && <div className='box content'>
         <h2 className='title is-size-5'>Informations pour les mineurs</h2>
         <p>
@@ -37,7 +39,7 @@ function TicketContent ({ data: { loading, error, node } }) {
       </div>}
     </div>
   }
-  return <div className='notification'>Chargement de la billeterie en cours.</div>
+  return <div className='notification'>Chargement de la billetterie en cours.</div>
 }
 
 export const edition = gql`
