@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import './styles.scss'
 import Moment from 'react-moment'
 import Meta from '../Meta'
-import SocialNetworkLinks from '../SocialNetworkLinks'
+import SocialNetworkShare from '../SocialNetworkShare'
 
 function NewsContent ({ data: { loading, error, node } }) {
   if (error || (node && node.type.id !== 'news')) {
@@ -27,7 +27,7 @@ function NewsContent ({ data: { loading, error, node } }) {
           <div className='level-item'> Créé le <Moment unix format='DD/MM/YYYY à HH:SS'>{node.created}</Moment>, par {node.entityOwner.name}</div>
         </div>
         <div className='level-right' >
-          <SocialNetworkLinks title={node.title} />
+          <SocialNetworkShare title={node.title} />
         </div>
       </div>
       <div className='content has-text-justified' >

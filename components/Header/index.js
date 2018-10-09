@@ -8,6 +8,7 @@ import './styles.scss'
 import TicketMenu from '../TicketMenu'
 
 import config from '../../config/config'
+import SocialNetworksLinks from '../SocialNetworksLinks'
 
 class Header extends React.Component {
   constructor (props) {
@@ -53,25 +54,12 @@ class Header extends React.Component {
               <ActiveLink label={config.partners.title} className='has-text-white' path='/partenaires' />
             </div>}
             <div className='navbar-end'>
-              <div className='navbar-item'>
-                {config.social && <div className='field is-grouped'>
-                  {config.social.facebook && <a className='control has-text-white' target='_blank' href={config.social.facebook}>
-                    <i className='fab fa-facebook' />
-                  </a>}
-                  {config.social.twitter && <a className='control has-text-white' target='_blank' href={config.social.twitter}>
-                    <i className='fab fa-twitter' />
-                  </a>}
-                  {config.social.flickr && <a className='control has-text-white' target='_blank' href={config.social.flickr}>
-                    <i className='fab fa-flickr' />
-                  </a>}
-                  {config.social.twitch && <a className='control has-text-white' target='_blank' href={config.social.twitch}>
-                    <i className='fab fa-twitch' />
-                  </a>}
-                  {config.social.youtube && <a className='control has-text-white' target='_blank' href={config.social.youtube}>
-                    <i className='fab fa-youtube' />
-                  </a>}
-                </div>}
-              </div>
+              {config.mainPartner && <a href={config.mainPartner.url} target='_blank'>
+                <img src={config.mainPartner.logo} />
+              </a>}
+              {config.mainPartner === undefined && config.social && <div className='navbar-item'>
+                <SocialNetworksLinks />
+              </div>}
             </div>
           </div>
         </nav>

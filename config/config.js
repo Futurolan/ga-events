@@ -4,6 +4,10 @@ let config = {
   description: 'Retrouvez la Gamers Assembly édition Halloween très prochainement',
   metaImage: `${process.env.BASE_URL}/static/img/logo-orange-200x200.png`,
   gaTrackingId: 'UA-7594737-17',
+  // mainPartner: {
+  //   logo: '/static/img/img106pxdehaut.png',
+  //   url: 'https://bmagic.fr'
+  // },
   home: {
     banner: '/static/img/bg-halloween-v1.png',
     twitterAccount: 'GamersAssembly'

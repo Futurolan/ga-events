@@ -14,9 +14,15 @@
     .navbar-item{
       margin:0 0.2rem;
     }
-
-    .navbar-end .field.is-grouped{
-      justify-content: center;
+    .navbar-end{
+      a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+          height: 106px;
+        }
+      }
     }
   }
 }

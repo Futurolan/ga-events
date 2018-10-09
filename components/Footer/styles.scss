@@ -1,11 +1,18 @@
 .ga-footer{
  &.footer{
    padding-bottom:3rem;
-   a:after{
-     content : ' - '
+   .ga-footer-links{
+     a:after{
+       content : ' - '
+     }
+     a:last-child:after{
+       content: ''
+     }
+
    }
-   a:last-child:after{
-     content: ''
+   .ga-footer-social-networks-links{
+     justify-content: center;
+     display: flex;
    }
  }
 }
