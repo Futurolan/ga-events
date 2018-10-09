@@ -5,9 +5,9 @@ let config = {
   metaImage: `${process.env.BASE_URL}/static/img/logo-orange-200x200.png`,
   gaTrackingId: 'UA-7594737-17',
   mainPartner: {
-     logo: '/static/img/logo_st_benoit.jpg',
-     url: 'http://www.ville-saint-benoit.fr/'
-   },
+    logo: '/static/img/logo_st_benoit.jpg',
+    url: 'http://www.ville-saint-benoit.fr/'
+  },
   home: {
     banner: '/static/img/bg-halloween-v1.png',
     twitterAccount: 'GamersAssembly'
