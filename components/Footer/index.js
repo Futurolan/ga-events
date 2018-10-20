@@ -1,7 +1,6 @@
 import React from 'react'
 
 import ActiveLink from 'components/ActiveLink'
-import SocialNetworksLinks from 'components/SocialNetworksLinks'
 
 import config from '../../config/config'
 
