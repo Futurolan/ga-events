@@ -11,7 +11,7 @@ class HomePage extends React.Component {
     return (
       <Layout name='home-page has-bg-star'>
         <div>
-          <Meta title='Accueil' />
+          <Meta />
           <EditionsList />
         </div>
       </Layout>

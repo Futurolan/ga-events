@@ -18,7 +18,6 @@
     "babel-eslint": "^10.0.1",
     "babel-plugin-module-resolver": "^3.1.1",
     "bulma": "^0.7.2",
-    "bulma-ribbon": "0.1.1",
     "classnames": "^2.2.6",
     "cssnano": "^4.1.4",
     "dotenv": "^6.1.0",

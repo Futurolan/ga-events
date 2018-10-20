@@ -4,6 +4,7 @@ import Link from 'next/link'
 import './styles.scss'
 
 import config from '../../config/config'
+import SocialNetworksLinks from 'components/SocialNetworksLinks'
 
 class Header extends React.Component {
   constructor (props) {
@@ -27,6 +28,13 @@ class Header extends React.Component {
                 <img src={config.logo} />
               </a>
             </Link>
+          </div>
+          <div className='navbar-menu'>
+            <div className='navbar-end'>
+              {config.social && <div className='navbar-item'>
+                <SocialNetworksLinks />
+              </div>}
+            </div>
           </div>
         </nav>
       </header>
