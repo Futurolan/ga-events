@@ -32,7 +32,8 @@ function EditionsList ({
                   imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
                   imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
                   imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
-                  url={edition.url} />
+                  url={edition.url}
+                  ticketActive={edition.weezeventUrl !== null} />
               </div>
             ))}
           </div>
@@ -53,7 +54,7 @@ function EditionsList ({
 export const editions = gql`
 {
   nodeQuery(
-  filter: {conditions: [{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"}]},
+  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"}]},
   sort:{field:"field_edition_start_date",direction:ASC}) {
     entities {
       ... on NodeEdition {
@@ -65,6 +66,7 @@ export const editions = gql`
         endDate:fieldEditionEndDate{
           value
         }
+        weezeventUrl:fieldEditionWeezeventUrl
         url:fieldEditionUrl
         place:fieldEditionPlace
         image:fieldEditionImage{

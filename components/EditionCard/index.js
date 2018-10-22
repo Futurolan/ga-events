@@ -10,25 +10,23 @@ const Countdown = dynamic(() => import('react-countdown-now'), {
   ssr: false
 })
 
-const CountdownRenderer = ({ total, days, hours, minutes, seconds, milliseconds, completed }) => {
+const CountdownRenderer = ({ total, days, hours }) => {
   return (
-    <div>{days} jours {hours} heures {minutes} minutes {seconds} seconds</div>
+    <div>{days} jours {hours} heures</div>
   )
 }
 
 CountdownRenderer.propTypes = {
   total: PropTypes.number,
   days: PropTypes.number,
-  hours: PropTypes.number,
-  minutes: PropTypes.number,
-  seconds: PropTypes.number,
-  milliseconds: PropTypes.number,
-  completed: PropTypes.number
+  hours: PropTypes.number
 }
 
 const Index = (props) => (
   <a target='_blank' href={props.url}>
-    <div className='ga-edition-card card'>
+    <div className='ga-edition-card card has-ribbon '>
+      {props.ticketActive && <div className='ribbon  is-size-7'> Billeterie ouverte</div>}
+
       <div className='card-image'>
         <figure className='image is-2by1'>
           {props.imgDesktopUrl && props.imgWidescreenUrl && props.imgFullhdUrl && props.imgMobileUrl && <img
@@ -43,10 +41,12 @@ const Index = (props) => (
 
         </div>
         <div className='has-text-centered'>
-          <Moment format='DD/MM/YYYY'>{props.date}</Moment> -
-          <Moment format='DD/MM/YYYY'>{props.endDate}</Moment>
+          <div>
+            <Moment format='DD/MM/YYYY'>{props.date}</Moment> -
+            <Moment format='DD/MM/YYYY'>{props.endDate}</Moment>
 
-          <Countdown date={new Date(props.date).getTime()} renderer={CountdownRenderer} className='countdown' />
+            <Countdown date={new Date(props.date).getTime()} renderer={CountdownRenderer} className='countdown' />
+          </div>
         </div>
       </div>
 
@@ -62,7 +62,8 @@ Index.propTypes = {
   imgWidescreenUrl: PropTypes.string,
   imgDesktopUrl: PropTypes.string,
   imgMobileUrl: PropTypes.string,
-  url: PropTypes.string
+  url: PropTypes.string,
+  ticketActive: PropTypes.bool
 }
 
 export default Index
