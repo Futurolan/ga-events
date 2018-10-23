@@ -42,9 +42,7 @@ const Index = (props) => (
         </div>
         <div className='has-text-centered'>
           <div>
-            <Moment format='DD/MM/YYYY'>{props.date}</Moment> -
-            <Moment format='DD/MM/YYYY'>{props.endDate}</Moment>
-
+            <Moment format='DD/MM/YYYY'>{props.date}</Moment> - <Moment format='DD/MM/YYYY'>{props.endDate}</Moment>
             <Countdown date={new Date(props.date).getTime()} renderer={CountdownRenderer} className='countdown' />
           </div>
         </div>
