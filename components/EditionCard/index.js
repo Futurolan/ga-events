@@ -25,7 +25,7 @@ CountdownRenderer.propTypes = {
 const Index = (props) => (
   <a target='_blank' href={props.url}>
     <div className='ga-edition-card card has-ribbon '>
-      {props.ticketActive && <div className='ribbon  is-size-7'> Billeterie ouverte</div>}
+      {props.ticketActive && <div className='ribbon  is-size-7'> Billetterie ouverte</div>}
 
       <div className='card-image'>
         <figure className='image is-2by1'>
