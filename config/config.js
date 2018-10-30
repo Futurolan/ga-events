@@ -5,7 +5,7 @@ let config = {
   metaImage: `${process.env.BASE_URL}/static/img/logo.png`,
   gaTrackingId: 'UA-7594737-17',
   recruit: {
-    active: true,
+    active: false,
     title: 'Recrutement',
     description: 'Devenir bénévole pour la Gamers Assembly, c\'est par ici !!!',
     formUrl: 'https://goo.gl/forms/84pHQfSp50RcuUel2'
@@ -15,7 +15,7 @@ let config = {
     pageId: 6
   },
   press: {
-    active: true,
+    active: false,
     pageId: 7
   },
   legals: {
