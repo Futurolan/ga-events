@@ -30,6 +30,7 @@ const Index = (props) => (
       <div className='card-image'>
         <figure className='image is-2by1'>
           {props.imgDesktopUrl && props.imgWidescreenUrl && props.imgFullhdUrl && props.imgMobileUrl && <img
+            src={props.imgMobileUrl}
             srcSet={`${props.imgDesktopUrl} 288w, ${props.imgWidescreenUrl} 352w, ${props.imgFullhdUrl} 416w, ${props.imgMobileUrl} 720w`}
             sizes='(min-width: 1408px) 416px,(min-width: 1216px) 352px, (min-width: 769px) 288px,  100vw'
           />}
