@@ -65,7 +65,7 @@ export const editions = gql`
 {
   nodeQuery(
   filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: SMALLER_THAN, value: "${new Date().toISOString()}"}]},
-  sort:{field:"field_edition_start_date",direction:ASC}) {
+  sort:{field:"field_edition_start_date",direction:DESC}) {
     entities {
       ... on NodeEdition {
         nid
