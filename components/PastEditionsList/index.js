@@ -2,7 +2,6 @@ import React from 'react'
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
-import EditionCard from 'components/EditionCard'
 import './styles.scss'
 import Moment from 'react-moment'
 function PastEditionsList ({
