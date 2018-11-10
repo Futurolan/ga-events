@@ -16,6 +16,7 @@ function EditionsList ({
       </section>
     </div>
   }
+
   if (loading) {
     return <div className='ga-editions-list'>
       <section className='section'>
@@ -30,7 +31,8 @@ function EditionsList ({
     return <div className='ga-editions-list has-bg-star'>
       <section className='section'>
         <div className='container'>
-          <h2 className='title title-line has-text-centered'><span>{nodeQuery.entities.length === 1 ? 'Événement' : 'Événements'}</span></h2>
+          <h2 className='title title-line has-text-centered'>
+            <span>{nodeQuery.entities.length === 1 ? 'Événement' : 'Événements'}</span></h2>
           <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
             {nodeQuery.entities.map((edition) => (
               <div className='column is-4-desktop is-12' key={edition.nid}>
@@ -50,13 +52,12 @@ function EditionsList ({
       </section>
     </div>
   }
-  return null
 }
 
 export const editions = gql`
 {
   nodeQuery(
-  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: GREATER_THAN, value: "${new Date().toISOString()}"}]},
+  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: GREATER_THAN, value: "${new Date(Math.round(new Date().getTime() / (1000 * 60 * 5)) * (1000 * 60 * 5)).toISOString()}"}]},
   sort:{field:"field_edition_start_date",direction:ASC}) {
     entities {
       ... on NodeEdition {

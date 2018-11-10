@@ -11,7 +11,7 @@ function PastEditionsList ({
     return <div className='ga-past-editions-list has-bg-star'>
       <section className='section'>
         <div className='container'>
-          <div className='notification is-danger'>Une erreur est survenue pendant le chargement des éditions !!!</div>
+          <div className='notification is-danger'>Une erreur est survenue pendant le chargement des éditions passées !!!</div>
         </div>
       </section>
     </div>
@@ -20,7 +20,7 @@ function PastEditionsList ({
     return <div className='ga-past-editions-list'>
       <section className='section'>
         <div className='container'>
-          <div className='notification'>Chargement des éditions en cours</div>
+          <div className='notification'>Chargement des éditions passées en cours</div>
         </div>
       </section>
     </div>
@@ -61,10 +61,10 @@ function PastEditionsList ({
   return null
 }
 
-export const editions = gql`
+export const pastEditions = gql`
 {
   nodeQuery(
-  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: SMALLER_THAN, value: "${new Date().toISOString()}"}]},
+  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: SMALLER_THAN, value: "${new Date(Math.round(new Date().getTime() / (1000 * 60 * 5)) * (1000 * 60 * 5)).toISOString()}"}]},
   sort:{field:"field_edition_start_date",direction:DESC}) {
     entities {
       ... on NodeEdition {
@@ -102,4 +102,4 @@ PastEditionsList.propTypes = {
   data: PropTypes.object
 }
 
-export default graphql(editions)(PastEditionsList)
+export default graphql(pastEditions)(PastEditionsList)

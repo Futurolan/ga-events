@@ -1,10 +1,10 @@
 import React from 'react'
-import Layout from 'components/Layout'
-import PageContent from 'components/PageContent'
-import config from '../config/config'
 import ErrorPage from 'next/error'
 
-import '../styles/styles.scss'
+import Layout from 'components/Layout'
+import PageContent from 'components/PageContent'
+
+import config from 'config/config'
 
 class ContactsPage extends React.Component {
   render () {

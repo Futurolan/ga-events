@@ -5,8 +5,6 @@ import Meta from 'components/Meta'
 import EditionsList from 'components/EditionsList'
 import PastEditionsList from 'components/PastEditionsList'
 
-import '../styles/styles.scss'
-
 class HomePage extends React.Component {
   render () {
     return (

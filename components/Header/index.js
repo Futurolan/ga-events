@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 import './styles.scss'
 
-import config from '../../config/config'
+import config from 'config/config'
 import SocialNetworksLinks from 'components/SocialNetworksLinks'
 
 class Header extends React.Component {

@@ -1,9 +1,10 @@
 import React from 'react'
+import ErrorPage from 'next/error'
+
 import Layout from 'components/Layout'
 import Meta from 'components/Meta'
-import '../styles/styles.scss'
-import config from '../config/config'
-import ErrorPage from 'next/error'
+
+import config from 'config/config'
 
 class RecrutementPage extends React.Component {
   render () {
