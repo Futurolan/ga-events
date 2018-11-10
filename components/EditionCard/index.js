@@ -24,8 +24,9 @@ CountdownRenderer.propTypes = {
 
 const Index = (props) => (
   <a target='_blank' href={props.url}>
-    <div className='ga-edition-card card has-ribbon '>
-      {props.ticketActive && <div className='ribbon  is-size-7'> Billetterie ouverte</div>}
+    <div className={`ga-edition-card card has-ribbon ${new Date(props.date) < new Date() && new Date(props.endDate) > new Date() ? 'is-live' : ''}`}>
+      {new Date(props.date) < new Date() && new Date(props.endDate) > new Date() && <div className='ribbon has-text-white is-size-5 has-background-danger'>En cours</div>}
+      {new Date(props.date) > new Date() && props.ticketActive && <div className='ribbon  is-size-7'> Billetterie ouverte</div>}
 
       <div className='card-image'>
         <figure className='image is-2by1'>
@@ -44,12 +45,11 @@ const Index = (props) => (
         <div className='has-text-centered'>
           <div>
             <Moment format='DD/MM/YYYY'>{props.date}</Moment> - <Moment format='DD/MM/YYYY'>{props.endDate}</Moment>
-            {new Date(props.date) < new Date() && new Date(props.endDate) > new Date() && <div className='has-text-danger'>En cours</div>}
             {new Date(props.date) > new Date() && <Countdown date={new Date(props.date).getTime()} renderer={CountdownRenderer} className='countdown' />}
+            {new Date(props.date) < new Date() && new Date(props.endDate) > new Date() && <div>&nbsp;</div>}
           </div>
         </div>
       </div>
-
     </div>
   </a>
 )

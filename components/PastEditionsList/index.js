@@ -4,11 +4,12 @@ import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import EditionCard from 'components/EditionCard'
 import './styles.scss'
-function EditionsList ({
+import Moment from 'react-moment'
+function PastEditionsList ({
   data: { loading, error, nodeQuery }
 }) {
   if (error) {
-    return <div className='ga-editions-list has-bg-star'>
+    return <div className='ga-past-editions-list has-bg-star'>
       <section className='section'>
         <div className='container'>
           <div className='notification is-danger'>Une erreur est survenue pendant le chargement des éditions !!!</div>
@@ -17,7 +18,7 @@ function EditionsList ({
     </div>
   }
   if (loading) {
-    return <div className='ga-editions-list'>
+    return <div className='ga-past-editions-list'>
       <section className='section'>
         <div className='container'>
           <div className='notification'>Chargement des éditions en cours</div>
@@ -27,25 +28,33 @@ function EditionsList ({
   }
 
   if (nodeQuery && nodeQuery.entities && nodeQuery.entities.length > 0) {
-    return <div className='ga-editions-list has-bg-star'>
+    return <div className='ga-past-editions-list has-bg-star'>
       <section className='section'>
         <div className='container'>
-          <h2 className='title title-line has-text-centered'><span>{nodeQuery.entities.length === 1 ? 'Événement' : 'Événements'}</span></h2>
+          <h3 className='title is-size-4 title-line has-text-centered'><span>{nodeQuery.entities.length === 1 ? 'Événement passé' : 'Événements passés'} </span></h3>
+
           <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
             {nodeQuery.entities.map((edition) => (
               <div className='column is-4-desktop is-12' key={edition.nid}>
-                <EditionCard title={edition.title}
-                  date={edition.date.value}
-                  endDate={edition.endDate.value}
-                  imgMobileUrl={edition.image ? edition.image.mobile.url : null}
-                  imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
-                  imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
-                  imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
-                  url={edition.url}
-                  ticketActive={edition.weezeventUrl !== null} />
+                <a target='_blank' href={edition.url}>
+
+                  <div className='card'>
+                    <div className='card-content '>
+                      <div className=' has-text-weight-semibold has-text-centered is-uppercase'>
+                        {edition.title}
+                      </div>
+                      <div className='has-text-centered'>
+                        <div>
+                          <Moment format='DD/MM/YYYY'>{edition.date.value}</Moment> - <Moment format='DD/MM/YYYY'>{edition.endDate.value}</Moment>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </a>
               </div>
             ))}
           </div>
+
         </div>
       </section>
     </div>
@@ -56,7 +65,7 @@ function EditionsList ({
 export const editions = gql`
 {
   nodeQuery(
-  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: GREATER_THAN, value: "${new Date().toISOString()}"}]},
+  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: SMALLER_THAN, value: "${new Date().toISOString()}"}]},
   sort:{field:"field_edition_start_date",direction:ASC}) {
     entities {
       ... on NodeEdition {
@@ -90,8 +99,8 @@ export const editions = gql`
   }
 }
 `
-EditionsList.propTypes = {
+PastEditionsList.propTypes = {
   data: PropTypes.object
 }
 
-export default graphql(editions)(EditionsList)
+export default graphql(editions)(PastEditionsList)

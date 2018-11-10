@@ -1,10 +1,13 @@
 .ga-edition-card{
   transition: all 0.3s;
+  &.is-live {
+    border: 1px solid red;
+  }
   &:hover{
     transform: scale(1.05);
   }
   .ribbon{
-    opacity:0.6;
+    opacity:0.8;
     border:none
   }
 }
