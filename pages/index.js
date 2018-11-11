@@ -3,7 +3,6 @@ import React from 'react'
 import Layout from 'components/Layout'
 import Meta from 'components/Meta'
 import EditionsList from 'components/EditionsList'
-import PastEditionsList from 'components/PastEditionsList'
 
 class HomePage extends React.Component {
   render () {
@@ -12,7 +11,6 @@ class HomePage extends React.Component {
         <div>
           <Meta />
           <EditionsList />
-          <PastEditionsList />
         </div>
       </Layout>
     )

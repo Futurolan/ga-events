@@ -4,6 +4,7 @@ import gql from 'graphql-tag'
 import PropTypes from 'prop-types'
 import EditionCard from 'components/EditionCard'
 import './styles.scss'
+import Moment from 'react-moment'
 function EditionsList ({
   data: { loading, error, nodeQuery }
 }) {
@@ -24,19 +25,52 @@ function EditionsList ({
           <h2 className='title title-line has-text-centered'>
             <span>{nodeQuery.entities.length === 1 ? 'Événement' : 'Événements'}</span></h2>
           <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
-            {nodeQuery.entities.map((edition) => (
-              <div className='column is-4-desktop is-12' key={edition.nid}>
-                <EditionCard title={edition.title}
-                  date={edition.date.value}
-                  endDate={edition.endDate.value}
-                  imgMobileUrl={edition.image ? edition.image.mobile.url : null}
-                  imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
-                  imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
-                  imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
-                  url={edition.url}
-                  ticketActive={edition.weezeventUrl !== null} />
-              </div>
-            ))}
+            {nodeQuery.entities.map((edition) => {
+              if (new Date(edition.endDate.value) > new Date()) {
+                return <div className='column is-4-desktop is-12' key={edition.nid}>
+
+                  <EditionCard title={edition.title}
+                    date={edition.date.value}
+                    endDate={edition.endDate.value}
+                    imgMobileUrl={edition.image ? edition.image.mobile.url : null}
+                    imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
+                    imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
+                    imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
+                    url={edition.url}
+                    ticketActive={edition.weezeventUrl !== null} />
+                </div>
+              } else return null
+            })}
+          </div>
+        </div>
+      </section>
+      <section className='section'>
+        <div className='container'>
+          <h3 className='title is-size-4 title-line has-text-centered'><span>{nodeQuery.entities.length === 1 ? 'Événement passé' : 'Événements passés'} </span></h3>
+
+          <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
+            {nodeQuery.entities.reverse().map((edition) => {
+              if (new Date(edition.endDate.value) < new Date()) {
+                return <div className='column is-4-desktop is-12' key={edition.nid}>
+                  <a target='_blank' href={edition.url}>
+
+                    <div className='card'>
+                      <div className='card-content '>
+                        <div className=' has-text-weight-semibold has-text-centered is-uppercase'>
+                          {edition.title}
+                        </div>
+                        <div className='has-text-centered'>
+                          <div>
+                            <Moment format='DD/MM/YYYY'>{edition.date.value}</Moment> - <Moment
+                              format='DD/MM/YYYY'>{edition.endDate.value}</Moment>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </div>
+              } else return null
+            })}
           </div>
         </div>
       </section>
@@ -57,7 +91,7 @@ function EditionsList ({
 export const editions = gql`
 {
   nodeQuery(
-  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"},{field: "field_edition_end_date", operator: GREATER_THAN, value: "${new Date(Math.trunc(new Date().getTime() / (1000 * 60 * 60)) * (1000 * 60 * 60)).toISOString()}"}]},
+  filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"}]},
   sort:{field:"field_edition_start_date",direction:ASC}) {
     entities {
       ... on NodeEdition {
