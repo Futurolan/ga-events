@@ -19,61 +19,67 @@ function EditionsList ({
   }
 
   if (nodeQuery && nodeQuery.entities && nodeQuery.entities.length > 0) {
+    const currentEditions = []
+    const pastEditions = []
+
+    for (let index in nodeQuery.entities) {
+      const edition = nodeQuery.entities[index]
+      if (new Date(edition.endDate.value) > new Date()) {
+        currentEditions.push(edition)
+      } else {
+        pastEditions.push(edition)
+      }
+    }
+
     return <div className='ga-editions-list has-bg-star'>
-      <section className='section has-bg-star'>
+      {currentEditions.length > 0 && <section className='section has-bg-star'>
         <div className='container'>
           <h2 className='title title-line has-text-centered'>
-            <span>{nodeQuery.entities.length === 1 ? 'Événement' : 'Événements'}</span></h2>
+            <span>{currentEditions.length === 1 ? 'Événement' : 'Événements'}</span></h2>
           <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
-            {nodeQuery.entities.map((edition) => {
-              if (new Date(edition.endDate.value) > new Date()) {
-                return <div className='column is-4-desktop is-12' key={edition.nid}>
-
-                  <EditionCard title={edition.title}
-                    date={edition.date.value}
-                    endDate={edition.endDate.value}
-                    imgMobileUrl={edition.image ? edition.image.mobile.url : null}
-                    imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
-                    imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
-                    imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
-                    url={edition.url}
-                    ticketActive={edition.weezeventUrl !== null} />
-                </div>
-              } else return null
+            {currentEditions.map((edition) => {
+              return <div className='column is-4-desktop is-12' key={edition.nid}>
+                <EditionCard title={edition.title}
+                  date={edition.date.value}
+                  endDate={edition.endDate.value}
+                  imgMobileUrl={edition.image ? edition.image.mobile.url : null}
+                  imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
+                  imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
+                  imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
+                  url={edition.url}
+                  ticketActive={edition.weezeventUrl !== null} />
+              </div>
             })}
           </div>
         </div>
-      </section>
-      <section className='section'>
+      </section>}
+      {pastEditions.length && <section className='section'>
         <div className='container'>
-          <h3 className='title is-size-4 title-line has-text-centered'><span>{nodeQuery.entities.length === 1 ? 'Événement passé' : 'Événements passés'} </span></h3>
-
+          <h3 className='title is-size-4 title-line has-text-centered'><span>{pastEditions.length === 1 ? 'Événement passé' : 'Événements passés'} </span></h3>
           <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
-            {nodeQuery.entities.reverse().map((edition) => {
-              if (new Date(edition.endDate.value) < new Date()) {
-                return <div className='column is-4-desktop is-12' key={edition.nid}>
-                  <a target='_blank' href={edition.url}>
+            {pastEditions.reverse().map((edition) => {
+              return <div className='column is-4-desktop is-12' key={edition.nid}>
+                <a target='_blank' href={edition.url}>
 
-                    <div className='card'>
-                      <div className='card-content '>
-                        <div className=' has-text-weight-semibold has-text-centered is-uppercase'>
-                          {edition.title}
-                        </div>
-                        <div className='has-text-centered'>
-                          <div>
-                            <Moment format='DD/MM/YYYY'>{edition.date.value}</Moment> - <Moment
-                              format='DD/MM/YYYY'>{edition.endDate.value}</Moment>
-                          </div>
+                  <div className='card'>
+                    <div className='card-content '>
+                      <div className=' has-text-weight-semibold has-text-centered is-uppercase'>
+                        {edition.title}
+                      </div>
+                      <div className='has-text-centered'>
+                        <div>
+                          <Moment format='DD/MM/YYYY'>{edition.date.value}</Moment> - <Moment
+                            format='DD/MM/YYYY'>{edition.endDate.value}</Moment>
                         </div>
                       </div>
                     </div>
-                  </a>
-                </div>
-              } else return null
+                  </div>
+                </a>
+              </div>
             })}
           </div>
         </div>
-      </section>
+      </section>}
     </div>
   } else if (nodeQuery && nodeQuery.entities && nodeQuery.entities.length === 0) {
     return null
