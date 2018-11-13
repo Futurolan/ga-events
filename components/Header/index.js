@@ -26,7 +26,7 @@ class Header extends React.Component {
           <div className='navbar-brand'>
             <Link href='/'>
               <a>
-                <img src={config.logo} />
+                <img alt='Logo de la Gamers Assembly' src={config.logo} />
               </a>
             </Link>
           </div>
