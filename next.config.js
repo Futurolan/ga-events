@@ -1,8 +1,14 @@
-require('dotenv').config()
 const withSass = require('@zeit/next-sass')
 const webpack = require('webpack')
 
 module.exports = withSass({
+
+  publicRuntimeConfig: {
+    BACKEND_API_URL: process.env.BACKEND_API_URL,
+    BACKEND_LOCAL_API_URL: process.env.BACKEND_LOCAL_API_URL,
+    BASE_URL: process.env.BASE_URL
+  },
+
   webpack: (config, { dev }) => {
     // Add polyfill for IE 10 & 11
     const originalEntry = config.entry

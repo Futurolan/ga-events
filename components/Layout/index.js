@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import Header from '../Header'
-import Footer from '../Footer'
+import * as gtag from 'lib/gtag'
 import Router from 'next/router'
 
-import * as gtag from '../../lib/gtag'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 

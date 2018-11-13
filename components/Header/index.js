@@ -1,10 +1,11 @@
 import React from 'react'
 import Link from 'next/link'
 
+import SocialNetworksLinks from 'components/SocialNetworksLinks'
+
 import './styles.scss'
 
 import config from 'config/config'
-import SocialNetworksLinks from 'components/SocialNetworksLinks'
 
 class Header extends React.Component {
   constructor (props) {
