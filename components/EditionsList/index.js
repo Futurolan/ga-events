@@ -6,6 +6,8 @@ import Moment from 'react-moment'
 
 import EditionCard from 'components/EditionCard'
 
+import config from 'config/config'
+
 import './styles.scss'
 
 function EditionsList ({
@@ -35,6 +37,7 @@ function EditionsList ({
     }
 
     return <div className='ga-editions-list has-bg-star'>
+      <h1>{config.title}</h1>
       {currentEditions.length > 0 && <section className='section has-bg-star'>
         <div className='container'>
           <h2 className='title title-line has-text-centered'>
@@ -66,9 +69,7 @@ function EditionsList ({
 
                   <div className='card'>
                     <div className='card-content '>
-                      <div className=' has-text-weight-semibold has-text-centered is-uppercase'>
-                        {edition.title}
-                      </div>
+                      <h3 className='is-size-6 has-text-weight-semibold has-text-centered is-uppercase'>{edition.title}</h3>
                       <div className='has-text-centered'>
                         <div>
                           <Moment format='DD/MM/YYYY'>{edition.date.value}</Moment> - <Moment

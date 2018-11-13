@@ -38,9 +38,8 @@ const Index = (props) => (
         </figure>
       </div>
       <div className='card-content '>
-        <div className='content has-text-weight-semibold has-text-centered is-uppercase'>
-          {props.title}
-
+        <div className='content'>
+          <h3 className='is-size-6 has-text-weight-semibold has-text-centered is-uppercase'>{props.title}</h3>
         </div>
         <div className='has-text-centered'>
           <div>
