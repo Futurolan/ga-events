@@ -22,7 +22,7 @@ CountdownRenderer.propTypes = {
   hours: PropTypes.number
 }
 
-const Index = (props) => (
+const EditionCard = (props) => (
   <a target='_blank' href={props.url}>
     <div className={`ga-edition-card card has-ribbon ${new Date(props.date) < new Date() && new Date(props.endDate) > new Date() ? 'is-live' : ''}`}>
       {new Date(props.date) < new Date() && new Date(props.endDate) > new Date() && <div className='ribbon has-text-white is-size-5 has-background-danger'>En cours</div>}
@@ -54,7 +54,7 @@ const Index = (props) => (
   </a>
 )
 
-Index.propTypes = {
+EditionCard.propTypes = {
   title: PropTypes.string,
   date: PropTypes.string,
   endDate: PropTypes.string,
@@ -66,4 +66,4 @@ Index.propTypes = {
   ticketActive: PropTypes.bool
 }
 
-export default Index
+export default EditionCard

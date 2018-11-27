@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import Moment from 'react-moment'
 
 import EditionCard from 'components/EditionCard'
+import NextEditionCard from 'components/NextEditionCard'
 
 import config from 'config/config'
 
@@ -44,17 +45,29 @@ function EditionsList ({
             <span>{currentEditions.length === 1 ? 'Événement' : 'Événements'}</span></h2>
           <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
             {currentEditions.map((edition) => {
-              return <div className='column is-4-desktop is-12' key={edition.nid}>
-                <EditionCard title={edition.title}
-                  date={edition.date.value}
-                  endDate={edition.endDate.value}
-                  imgMobileUrl={edition.image ? edition.image.mobile.url : null}
-                  imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
-                  imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
-                  imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
-                  url={edition.url}
-                  ticketActive={edition.weezeventUrl !== null} />
-              </div>
+              if (edition.url) {
+                return <div className='column is-4-desktop is-12' key={edition.nid}>
+                  <EditionCard title={edition.title}
+                    date={edition.date.value}
+                    endDate={edition.endDate.value}
+                    imgMobileUrl={edition.image ? edition.image.mobile.url : null}
+                    imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
+                    imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
+                    imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
+                    url={edition.url}
+                    ticketActive={edition.weezeventUrl !== null} />
+                </div>
+              } else {
+                return <div className='column is-4-desktop is-12' key={edition.nid}>
+                  <NextEditionCard title={edition.title}
+                    date={edition.date.value}
+                    endDate={edition.endDate.value}
+                    imgMobileUrl={edition.image ? edition.image.mobile.url : null}
+                    imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
+                    imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
+                    imgFullhdUrl={edition.image ? edition.image.fullhd.url : null} />
+                </div>
+              }
             })}
           </div>
         </div>
