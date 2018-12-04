@@ -39,6 +39,7 @@ const nextConfig = {
 }
 
 module.exports = withPlugins([
+  [sass],
   [optimizedImages, {
     handleImages: ['png', 'jpg'],
     mozjpeg: {
@@ -47,6 +48,5 @@ module.exports = withPlugins([
     optipng: {
       optimizationLevel: 3
     }
-  }],
-  [sass]
+  }]
 ], nextConfig)
