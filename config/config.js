@@ -1,7 +1,7 @@
 let config = {
   title: 'Gamers Assembly',
   logo: `/static/img/logo.png`,
-  logo: `/static/img/logo2.png`,
+  logo2: `/static/img/logo2.png`,
   description: 'La Gamers assembly est un ensemble de LANs organisées par l\'association Futurolan',
   metaImagePath: '/static/img/logo.png',
   gaTrackingId: 'UA-128777022-1',
