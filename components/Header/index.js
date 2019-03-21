@@ -30,6 +30,13 @@ class Header extends React.Component {
               </a>
             </Link>
           </div>
+          <div className='navbar-brand'>
+            <Link href='/'>
+              <a>
+                <img alt='Logo FuturoLAN' src={config.logo2} />
+              </a>
+            </Link>
+          </div>
           <div className='navbar-menu'>
             <div className='navbar-end'>
               {config.social && <div className='navbar-item'>
