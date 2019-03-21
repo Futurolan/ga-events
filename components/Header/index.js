@@ -20,7 +20,6 @@ class Header extends React.Component {
   }
   render () {
     return (
-
       <header className='ga-header'>
         <nav className='navbar has-background-dark'>
           <div className='navbar-brand'>
@@ -29,10 +28,8 @@ class Header extends React.Component {
                 <img alt='Logo de la Gamers Assembly' src={config.logo} />
               </a>
             </Link>
-          </div>
-          <div className='navbar-brand'>
             <Link href='/'>
-              <a>
+              <a className='logo-futurolan'>
                 <img alt='Logo FuturoLAN' src={config.logo2} />
               </a>
             </Link>
