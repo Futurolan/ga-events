@@ -11,16 +11,18 @@ function PageContent ({ data: { loading, error, node } }) {
   }
 
   if (node) {
-    return <div className='ga-page-content'>
-      <Meta title={node.title} description={node.description} />
+    return (
+      <div className='ga-page-content'>
+        <Meta title={node.title} description={node.description} />
 
-      <h1 className='title title-line has-text-centered'><span>{node.title}</span></h1>
+        <h1 className='title title-line has-text-centered'><span>{node.title}</span></h1>
 
-      <div className='content has-text-justified' >
-        <div dangerouslySetInnerHTML={{ __html: node.content.processed }} />
+        <div className='content has-text-justified'>
+          <div dangerouslySetInnerHTML={{ __html: node.content.processed }} />
+        </div>
+
       </div>
-
-    </div>
+    )
   }
   return <div className='notification'>Chargement de la page en cours</div>
 }

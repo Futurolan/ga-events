@@ -18,6 +18,7 @@ class Header extends React.Component {
   toggleMenu () {
     this.setState({ isOpen: !this.state.isOpen })
   }
+
   render () {
     return (
       <header className='ga-header'>
@@ -36,9 +37,10 @@ class Header extends React.Component {
           </div>
           <div className='navbar-menu'>
             <div className='navbar-end'>
-              {config.social && <div className='navbar-item'>
-                <SocialNetworksLinks />
-              </div>}
+              {config.social &&
+                <div className='navbar-item'>
+                  <SocialNetworksLinks />
+                </div>}
             </div>
           </div>
         </nav>
