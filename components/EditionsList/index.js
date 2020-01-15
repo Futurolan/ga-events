@@ -28,7 +28,7 @@ function EditionsList ({
     const currentEditions = []
     const pastEditions = []
 
-    for (let index in nodeQuery.entities) {
+    for (const index in nodeQuery.entities) {
       const edition = nodeQuery.entities[index]
       if (new Date(edition.endDate.value) > new Date()) {
         currentEditions.push(edition)
@@ -42,12 +42,14 @@ function EditionsList ({
       {currentEditions.length > 0 && <section className='section has-bg-star'>
         <div className='container'>
           <h2 className='title title-line has-text-centered'>
-            <span>{currentEditions.length === 1 ? 'Événement' : 'Événements'}</span></h2>
+            <span>{currentEditions.length === 1 ? 'Événement' : 'Événements'}</span>
+          </h2>
           <div className='is-multiline columns is-centered is-6 is-variable editions-list is-vcentered'>
             {currentEditions.map((edition) => {
               if (edition.url) {
                 return <div className='column is-4-desktop is-12' key={edition.nid}>
-                  <EditionCard title={edition.title}
+                  <EditionCard
+                    title={edition.title}
                     date={edition.date.value}
                     endDate={edition.endDate.value}
                     imgMobileUrl={edition.image ? edition.image.mobile.url : null}
@@ -55,17 +57,20 @@ function EditionsList ({
                     imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
                     imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
                     url={edition.url}
-                    ticketActive={edition.weezeventUrl !== null} />
+                    ticketActive={edition.weezeventUrl !== null}
+                  />
                 </div>
               } else {
                 return <div className='column is-4-desktop is-12' key={edition.nid}>
-                  <NextEditionCard title={edition.title}
+                  <NextEditionCard
+                    title={edition.title}
                     date={edition.date.value}
                     endDate={edition.endDate.value}
                     imgMobileUrl={edition.image ? edition.image.mobile.url : null}
                     imgDesktopUrl={edition.image ? edition.image.desktop.url : null}
                     imgWidescreenUrl={edition.image ? edition.image.widescreen.url : null}
-                    imgFullhdUrl={edition.image ? edition.image.fullhd.url : null} />
+                    imgFullhdUrl={edition.image ? edition.image.fullhd.url : null}
+                  />
                 </div>
               }
             })}
@@ -86,7 +91,9 @@ function EditionsList ({
                       <div className='has-text-centered'>
                         <div>
                           <Moment format='DD/MM/YYYY'>{edition.date.value}</Moment> - <Moment
-                            format='DD/MM/YYYY'>{edition.endDate.value}</Moment>
+                            format='DD/MM/YYYY'
+                          >{edition.endDate.value}
+                          </Moment>
                         </div>
                       </div>
                     </div>
@@ -130,16 +137,16 @@ export const editions = gql`
         url:fieldEditionUrl
         place:fieldEditionPlace
         image:fieldEditionImage{
-          mobile:derivative(style:CROP_2_1_720X360){
+          mobile:derivative(style:CROP21720X360){
             url
           }
-          desktop:derivative(style:CROP_2_1_288X144){
+          desktop:derivative(style:CROP21288X144){
             url
           }
-          widescreen:derivative(style:CROP_2_1_352X176){
+          widescreen:derivative(style:CROP21352X176){
             url
           }
-          fullhd:derivative(style:CROP_2_1_416X208){
+          fullhd:derivative(style:CROP21416X208){
             url
           }
         }

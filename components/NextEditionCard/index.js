@@ -22,7 +22,7 @@ CountdownRenderer.propTypes = {
 }
 
 const NextEditionCard = (props) => (
-  <div className={`ga-next-edition-card card has-ribbon`}>
+  <div className='ga-next-edition-card card has-ribbon'>
     {new Date(props.date) > new Date() && <div className='ribbon  is-size-7'>Prochainement</div>}
 
     <div className='card-image'>

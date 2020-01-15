@@ -16,7 +16,7 @@ function PageContent ({ data: { loading, error, node } }) {
 
       <h1 className='title title-line has-text-centered'><span>{node.title}</span></h1>
 
-      <div className='content has-text-justified' >
+      <div className='content has-text-justified'>
         <div dangerouslySetInnerHTML={{ __html: node.content.processed }} />
       </div>
 

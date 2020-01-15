@@ -18,6 +18,7 @@ class Header extends React.Component {
   toggleMenu () {
     this.setState({ isOpen: !this.state.isOpen })
   }
+
   render () {
     return (
       <header className='ga-header'>
