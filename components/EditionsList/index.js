@@ -25,7 +25,6 @@ function EditionsList ({
       </div>
     )
   }
-
   if (nodeQuery && nodeQuery.entities && nodeQuery.entities.length > 0) {
     const currentEditions = []
     const pastEditions = []
@@ -137,7 +136,8 @@ export const editions = gql`
 {
   nodeQuery(
   filter: {conditions: [{field: "status", value: "1"},{field: "type", value: "edition"},{field:"field_edition_display_on_ga",value:"1"}]},
-  sort:{field:"field_edition_start_date",direction:ASC}) {
+  sort:{field:"field_edition_start_date",direction:ASC},
+  limit: 9999) {
     entities {
       ... on NodeEdition {
         nid
