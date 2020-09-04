@@ -33,7 +33,7 @@
     "next-compose-plugins": "^2.2.0",
     "next-optimized-images": "^2.5.4",
     "next-with-apollo": "^4.3.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "postcss-discard-comments": "^4.0.2",
     "postcss-loader": "^3.0.0",
     "prop-types": "^15.7.2",
